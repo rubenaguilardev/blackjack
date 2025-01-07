@@ -1,0 +1,17 @@
+body {
+    background-image: url(../img/table.jpg);
+    background-size: contain;
+    font-family: 'Oxanium';
+    color: white;
+}
+
+main {
+    margin: 50px auto;
+    width: 80%;
+}
+
+h1 {
+    font-family: 'Rye';
+    font-size: 5rem;
+    text-align: center;
+}
