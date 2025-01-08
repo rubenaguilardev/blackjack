@@ -18,9 +18,12 @@ function deal() {
         .then(data => {
             console.log(data)
             document.querySelector('#playerCard1').src = data.cards[0].image
-            document.querySelector('#playerCard2').src = data.cards[1].image
-            document.querySelector('#dealerCard1').src = data.cards[2].image
-            document.querySelector('#dealerCard2').src = "img/back.png"
+            setTimeout(() => {
+                document.querySelector('#playerCard2').src = data.cards[1].image}, 1500)
+            setTimeout(() => {
+                document.querySelector('#dealerCard1').src = data.cards[2].image}, 2500)
+            setTimeout(() => {
+                document.querySelector('#dealerCard2').src = "img/back.png"}, 3500)
         })
         .catch(err => {
             console.log(`error ${err}`)
