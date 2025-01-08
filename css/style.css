@@ -23,11 +23,13 @@ h2 {
 }
 
 .cards {
+    position: relative;
     width: 370px;
     height: 335px;
     margin: 0 auto;
     border: 1px solid white;
     border-radius: 10px;
+   
 }
 
 img {
@@ -37,13 +39,16 @@ img {
 #dealerCard1,
 #playerCard1 {
     position: absolute;
-    margin: 10px 0 0 -60px;
+    
+    top: 10px;
+    left: 10px;
+    z-index: 0;
 }
 
 #dealerCard2,
 #playerCard2 {
-    position: relative;
+    position: absolute;
     left: 60px;
     top: 10px;
-
+    z-index: 1;
 }

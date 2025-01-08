@@ -17,7 +17,9 @@ function deal() {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            document.querySelector('#playerCard1').src = data.cards[0].image
+
+            setTimeout(() => {
+                document.querySelector('#playerCard1').src = data.cards[0].image}, 750)
             setTimeout(() => {
                 document.querySelector('#playerCard2').src = data.cards[1].image}, 1500)
             setTimeout(() => {
