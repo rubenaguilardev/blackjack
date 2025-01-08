@@ -32,14 +32,9 @@ h2 {
    
 }
 
-img {
-    
-}
-
 #dealerCard1,
 #playerCard1 {
     position: absolute;
-    
     top: 10px;
     left: 10px;
     z-index: 0;
@@ -48,7 +43,7 @@ img {
 #dealerCard2,
 #playerCard2 {
     position: absolute;
-    left: 60px;
+    left: 70px;
     top: 10px;
     z-index: 1;
 }
