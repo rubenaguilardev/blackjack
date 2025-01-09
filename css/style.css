@@ -25,13 +25,17 @@ h2 {
 
 .cards {
     position: relative;
-    width: 370px;
+    width: 302px;
     height: 335px;
     margin: 0 auto;
     border: 1px solid white;
     border-radius: 10px;
     margin-bottom: 40px;
    
+}
+
+.playerCards {
+    position: relative;
 }
 
 #dealerCard1,
@@ -45,23 +49,24 @@ h2 {
 #dealerCard2,
 #playerCard2 {
     position: absolute;
-    left: 70px;
+    left: 65px;
     top: 10px;
     z-index: 1;
 }
 
-#playerCard3 {
+.nextCard {
     position: absolute;
-    left: 130px;
-    top: 10px;
     z-index: 2;
+    top: 10px;
+    left: 130px;
+    
 }
 img {
     font-size: 0;
 }
 
 button {
-    width: 100px;
+    width: 92px;
     height: 50px;
     border-radius: 10px;
     font-size: 1.5rem;
@@ -97,13 +102,13 @@ button {
 
 #split {
     background-color: orange;
-    margin-left: 102px;
+    margin-left: 96px;
 }
 
 .buttons {
     display: flex;
     justify-content: space-between;
-    width: 370px;
+    width: 306px;
     margin: 15px auto;
 }
 
