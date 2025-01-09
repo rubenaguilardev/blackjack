@@ -15,11 +15,12 @@ h1 {
     font-family: 'Rye';
     font-size: 5rem;
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 h2 {
     font-size: 2rem;
+    display: inline-block;
 }
 
 .cards {
@@ -29,6 +30,7 @@ h2 {
     margin: 0 auto;
     border: 1px solid white;
     border-radius: 10px;
+    margin-bottom: 40px;
    
 }
 
@@ -47,3 +49,65 @@ h2 {
     top: 10px;
     z-index: 1;
 }
+
+#playerCard3 {
+    position: absolute;
+    left: 130px;
+    top: 10px;
+    z-index: 2;
+}
+img {
+    font-size: 0;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    border: none;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px #000;
+}
+
+.playerDiv {
+    
+    width: 370px;
+    margin: 0 auto;
+}
+
+#hit {
+    background-color: rgb(7, 47, 179);    
+}
+
+#stand {
+    background-color: rgb(201, 25, 25);
+}
+
+#double {
+    background-color: rgb(241, 205, 0);
+}
+
+#play {
+    background-color: rgb(6, 212, 23);
+    float: right;
+}
+
+#split {
+    background-color: orange;
+    margin-left: 102px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 370px;
+    margin: 15px auto;
+}
+
+
+
+
+
