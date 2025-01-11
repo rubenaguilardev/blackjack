@@ -6,8 +6,6 @@ function main() {
         .then(res => res.json())
         .then(data => {
             deckId = data.deck_id
-            console.log(deckId)
-            console.log(data)
         })
         .catch(err => {
             console.log(`error ${err}`)
@@ -47,45 +45,54 @@ function main() {
                 document.querySelector('#hit').addEventListener('click', function () {
                     drawCard()
                         .then(function (newCard) { 
-                            if (document.querySelector('.playerCards').contains(document.querySelector('.nextCard'))) {
-                                cardDealtSound()
-                                let newCardImage = createCardImage(newCard.image)
-                                let playerCardsContainer = document.querySelector('.playerCards')
-                                let numCards = playerCardsContainer.children.length
-                                let newLeft = numCards *65
-                                newCardImage.style.left = `${newLeft}px`
-                                playerCardsContainer.appendChild(newCardImage)
-                                playerCards.push(newCard.value)
-                                console.log(playerCards)
-                            } else {
-                                cardDealtSound()
-                                let newCardImage = createCardImage(newCard.image)
-                                document.querySelector('.playerCards').appendChild(newCardImage)  
-                                playerCards.push(newCard.value)
-                                console.log(playerCards)
+                            cardDealtSound()
+                            let newCardImage = createCardImage(newCard.image)
+                            let playerCardsContainer = document.querySelector('.playerCards')
+                            let numCards = playerCardsContainer.children.length
+                            let newLeft = numCards *65
+                            newCardImage.style.left = `${newLeft}px`
+                            playerCardsContainer.appendChild(newCardImage)
+                            playerCards.push(newCard.value)
+                            playerTotal = addCardTotal(playerCards)
+                            console.log(playerTotal)
+                            if (playerTotal > 21) {
+                                if (checkForAce(playerCards)) {
+                                    playerTotal -= 10
+                                } else {
+                                    console.log("Dealer Wins!")
+                                }
                             }
-                              
-                        })
-                        
+                        })               
                 })
 
-                // document.querySelector('#stand').addEventListener('click', function () {
+                document.querySelector('#stand').addEventListener('click', function () {
 
-                //     document.querySelector('#dealerCard2').src = data.cards[3].image
-                //     dealerCards.push(data.cards[3].value)
-                //     playerTotal = addCardTotal(playerCards)
-                //     console.log(playerTotal)
-                //     dealerTotal = addCardTotal(dealerCards)
-                //     console.log(dealerTotal)
-                //     if (dealerTotal < 17) {
-                //         let card = drawCard()
-                //         console.log(card)
-                //     }
-                // })      
+                    document.querySelector('#dealerCard2').src = data.cards[3].image
+                    dealerCards.push(data.cards[3].value)
+                    playerTotal = addCardTotal(playerCards)
+                    console.log(playerTotal)
+                    dealerTotal = addCardTotal(dealerCards)
+                    console.log(dealerTotal)
+                    if (dealerTotal < 17) {
+                        drawCard()
+                            .then(function (newCard) {
+                                cardDealtSound()
+                                let newCardImage = createCardImage(newCard.image)
+                                let dealerCardsContainer = document.querySelector('.dealerCards')
+                                let numCards = dealerCardsContainer.children.length
+                                let newLeft = numCards *65
+                                newCardImage.style.left = `${newLeft}px`
+                                dealerCardsContainer.appendChild(newCardImage)
+                                dealerCards.push(newCard.value)
+                            })
+                    } else if (dealerTotal > 16){
+                        checkForWinner()
+                    }
+                })      
         })
-            .catch(err => {
-                console.log(`error ${err}`)
-            })
+        .catch(err => {
+            console.log(`error ${err}`)
+        })
           
     }
 
@@ -99,6 +106,13 @@ function main() {
     function shuffle() {
         let shuffle = new Audio("sounds/shuffle.mp3")
         shuffle.play()
+    }
+
+    
+    function checkForAce(cards) {
+        if (cards.includes('ACE')) {
+            return true
+        }
     }
 
 
@@ -131,6 +145,9 @@ function main() {
         newCardImage.src = card
         return newCardImage
     }
+
+
+    
 }
 
 
