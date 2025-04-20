@@ -1,5 +1,5 @@
 // Request a deck of cards from card API
-function main() {
+
 
     let deckId = ''
     fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
