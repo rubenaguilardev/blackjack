@@ -1,1 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
 @import "tailwindcss";
+
+@layer base {
+  .rey {
+    font-family: 'Rye', sans-serif;
+  }
+}
