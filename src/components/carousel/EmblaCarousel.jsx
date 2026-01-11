@@ -27,7 +27,9 @@ const EmblaCarousel = (props) => {
         <div className="embla__container">
           {slides.map((chip, index) => (
             <div className="embla__slide" key={index}>
-              <img src={chip} className="embla__slide__number" />
+              <div className="embla__slide__number bg-contain" style={{ backgroundImage: `url('${chip.img}')` }}>
+                <h3>{chip.value}</h3>
+              </div>
             </div>
           ))}
         </div>

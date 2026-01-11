@@ -4,12 +4,12 @@ import EmblaCarousel from "./carousel/EmblaCarousel"
 const Table = () => {
 
 const defaultChips = [
-    '/purple-chip.png',
-    '/purple-chip.png',
-    '/purple-chip.png',
-    '/purple-chip.png',
-    '/purple-chip.png',
-    '/purple-chip.png',
+    {img:'/purple-chip.png', value: '$25'},
+    {img:'/purple-chip.png', value: '$25'},
+    {img:'/purple-chip.png', value: '$25'},
+    {img:'/purple-chip.png', value: '$25'},
+    {img:'/purple-chip.png', value: '$25'},
+    {img:'/purple-chip.png', value: '$25'},
 ]
    
 const [game, setGame] = useState(
