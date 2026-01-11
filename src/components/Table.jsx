@@ -14,12 +14,11 @@ const [game, setGame] = useState(
         },
         dealerHand: [],
         gamePhase: 'not started',
-        pot: 0
     }
 )
 
 const defaultChips = [
-    {img:'/purple-chip.png', value: 25},
+    {img:'/blue-chip.png', value: 1},
     {img:'/purple-chip.png', value: 25},
     {img:'/purple-chip.png', value: 25},
     {img:'/purple-chip.png', value: 25},
@@ -54,11 +53,11 @@ const renderBetChip = (amount) => {
     
     switch (amount) {
         case 1: color = 'white'; break
-        case 5: color = 'blue'; break
+        case 5: color = 'green'; break
         case 25: color = 'purple'; break
         case 50: color = 'orange'; break
         case 100: color = 'black'; break
-        default: color = 'green'
+        default: color = 'blue'
     }
         return <div style={{ backgroundImage: `url(/${color}-chip.png)` }} className='h-26 w-26 flex justify-center items-center bg-contain'>
             <span 
@@ -71,20 +70,44 @@ const renderBetChip = (amount) => {
         
 }
 
+const deal = () => {
+    setGame(prev => ({
+        ...prev,
+        player: {
+            ...prev.player,
+            chipCount: prev.player.chipCount - prev.player.currentBet
+        }
+    }))
+}
+
 
 return (
-    <section className="flex">
+    <section className="flex w-full">
+        <button 
+            className="text-white text-2xl border"
+            onClick={deal}
+        >
+            Deal
+        </button>
         <div className="fixed bottom-40 left-1/2 transform -translate-x-1/2">
-            <div className="flex justify-center items-center h-36 w-36 rounded-full border-2 border-white">
-                <div className="flex justify-center items-center h-32 w-32 p-2 rounded-full border-2 border-white">
-                    {game.player.currentBet ? renderBetChip(game.player.currentBet): <span className="text-white text-4xl">Bet</span>} 
+            <div className={`flex justify-center items-center h-36 w-36 rounded-full border-2 border-white ${game.player.currentBet ? '' : 'animate-pulse'}`}>
+                <div className="flex justify-center items-center h-32 w-32 p-2 rounded-full border-2 border-white text-center">
+                    {game.player.currentBet ? renderBetChip(game.player.currentBet): <span className="text-white text-2xl">Place Your Bet</span>} 
                 </div>
             </div>
         </div>
        
-        <div className="fixed bottom-4 right-4">
-            <EmblaCarousel slides={defaultChips} options={{ loop: true }} onChipClick={handleChipClick} />
+        <div className="fixed bottom-8 left-0 right-0 flex justify-between items-end px-16">
+            <div className="text-white">
+                <h4>Balance:</h4>
+                <span>${game.player.chipCount}</span>
+            </div>
+            <div>
+                <EmblaCarousel slides={defaultChips} options={{ loop: true }} onChipClick={handleChipClick} />
+            </div>
         </div>
+       
+  
         
     </section>
 )
